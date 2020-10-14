@@ -120,16 +120,21 @@ namespace kameded
 
         public void UploadAndExit()
         {
-            var sub = _endTime - _startTime;
-            var substr = sub.Days > 0 ? sub.ToString("d'日'h'時間'm'分's'秒'") : sub.ToString("h'時間'm'分's'秒'");
-            var datestr = _startTime.ToString("yyyy'年'M'月'd'日'(ddd) H'時'm'分's'秒'") + " → " + _endTime.ToString("yyyy'年'M'月'd'日'(ddd) H'時'm'分's'秒'");
-            string str = $"🕒 PYSM時間 {substr}```{datestr}```";
-
-            using (DWebHook dcWeb = new DWebHook())
+            if (_webhook != null)
             {
-                dcWeb.WebHook = _webhook;
-                dcWeb.SendMessage(str);
+                var sub = _endTime - _startTime;
+                var substr = sub.Days > 0 ? sub.ToString("d'日'h'時間'm'分's'秒'") : sub.ToString("h'時間'm'分's'秒'");
+                var datestr = _startTime.ToString("yyyy'年'M'月'd'日'(ddd) H'時'm'分's'秒'") + " → " +
+                              _endTime.ToString("yyyy'年'M'月'd'日'(ddd) H'時'm'分's'秒'");
+                string str = $"🕒 PYSM時間 {substr}```{datestr}```";
+
+                using (DWebHook dcWeb = new DWebHook())
+                {
+                    dcWeb.WebHook = _webhook;
+                    dcWeb.SendMessage(str);
+                }
             }
+
             Close();
         }
 
