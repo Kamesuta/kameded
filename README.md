@@ -2,6 +2,12 @@
 
 ![アプリ](https://i.gyazo.com/2a51f26841f3b2e612f728e9c12d5bd1.png)
 
+## ダウンロード
+
+以下のリンクから「kameded.exe」をクリックするとダウンロードできます
+
+[![ダウンロード](https://img.shields.io/badge/kameded.exe-%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89-green)](https://github.com/Kamesuta/kameded/releases)
+
 ## 機能
 
 - 画面をOFFにします
