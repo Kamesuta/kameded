@@ -223,6 +223,7 @@
             this.kamewait_time.TabIndex = 3;
             this.kamewait_time.Text = "5";
             this.kamewait_time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.kamewait_time.Click += new System.EventHandler(this.kamepkt_Click);
             // 
             // kameblank
             // 
@@ -235,6 +236,7 @@
             this.kameblank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.kameblank.TabIndex = 2;
             this.kameblank.TabStop = false;
+            this.kameblank.Click += new System.EventHandler(this.kamepkt_Click);
             // 
             // kamepkt
             // 

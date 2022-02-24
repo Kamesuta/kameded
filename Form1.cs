@@ -18,6 +18,7 @@ namespace kameded
 
         private int _pysmCountdown = 25;
         private string _webhook;
+        private Point _point;
 
         public Form1(string webhook)
         {
@@ -54,8 +55,24 @@ namespace kameded
             kamepkt.Visible = false;
         }
 
+        public void KeepPkt()
+        {
+            kamepkt.Visible = true;
+
+            _pysmCountdown = 25;
+            pkt_timer.Stop();
+            pkt_timer.Start();
+        }
+
         private void pkt_timer_Tick(object sender, EventArgs e)
         {
+            var lastPoint = _point;
+            _point = Control.MousePosition;
+            if (_point != lastPoint)
+            {
+                KeepPkt();
+            }
+
             if (_pysmCountdown > 0)
             {
                 _pysmCountdown--;
@@ -67,11 +84,19 @@ namespace kameded
                 Text = "kameded";
                 PysmAgain();
             }
-
         }
 
         private void elapsed_timer_Tick(object sender, EventArgs e)
         {
+            var lastPoint = _point;
+            _point = Control.MousePosition;
+            if (_point != lastPoint)
+            {
+                kamewait.Visible = false;
+                kamepkt.Visible = false;
+                Pkt();
+            }
+
             if (_countdown > 0)
             {
                 _countdown--;
@@ -91,7 +116,6 @@ namespace kameded
                 var sub = _endTime - _startTime;
                 elapsed_time.Text = sub.ToString("d'.'hh':'mm':'ss");
             }
-
         }
 
         private void kamepkt_MouseHover(object sender, EventArgs e)
